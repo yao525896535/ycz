@@ -1,0 +1,61 @@
+                                                                    hadoop学习笔记
+hadoop实现了一个分布式文件系统，简称hdfs，它具有高可靠性和高一致性(AP)
+hadoop的运行模式一般分为三种:
+1)本地模式，所有程序都在同一个jvm上执行
+2)伪分布式(单机模式)，hadoop进程运行在本地机器上，模拟出一个小规模的集群(我用的即是这种模式)
+3)全分布式，hadoop进程运行在一个物理集群上
+
+hadoop将命令大致分为两组:用户命令，管理命令(后改为hdfs命令)
+用户命令--hadoop archive:要创建的档案文件名字         归档包:归档文件，复合文件　.har
+fs:运行一个常规的文件系统客户端
+    hadoop fs -ls  hadoop查看命令
+distcp:并行复制大量数据，一般用于在两个hdfs集群中传输数据
+    hadoop distcp 源文件　复制出的文件(分布式)   //适用于文件大的情况下
+    hadoop fs -cp 源文件　复制出的文件
+管理命令--balancer:运行集群平衡工具
+fask:检查HDFS上文件和目录的健康状态、获取文件的block块信息和位置信息
+dfsadmin:运行一二hdfs的dfsadmin客户端
+    hdfs dfsadmin -safemode enter    进入只读模式
+    hdfs dfsadmin -safemode leave    解除只读模式
+                  -refreshNode       重新读取hosts和exclude文件
+                  -finalizeUpgrade   终结hdfs的升级操作
+
+查看日志
+日志的级别(６个级别，优先级从高到低排序):fatal,error,warn,info,debug,trace
+    hadoop daemonlog -getlevel 主机名:端口 namenode    --查看日志级别
+    hadoop daemonlog -setlevel 主机名:端口 namenode  info  --更改日志级别为info
+日志设置规格:log4j.logger=级别,stdout,名字
+日志打印 log.debug("1")
+        log.error(e,"函数参数:"+函数参数.toString)
+*log4j(默认优先级为error/warn)     将level设置在某一个级别上，那么比此级别优先级高的log都能打印出来
+**日志的文件是滚动文件
+      namedir--VERSION     tep/dfs/current   datadir/current--里面的VERSION和namedir中的VERSION一样   
+      只有namedir和datadir中的VERSION一致时，datanode才能够起来
+
+
+添加节点流程:
+拷贝一个运行环境的datenode节点到一个新的主机上面，并且修改好主机的ip和基本配置
+修改集群中的/etc/hosts和slaves配置文件
+启动新的节点
+均衡banlancer(优化默认带宽，可以改动)
+
+删除节点流程:
+修改配置hdfs-site.xml，创建一个exclude文件夹  竖着列出所有要下架的机器
+强制重新修改配置
+关闭下架节点上的hadoop服务
+检查现有集群
+把exclude中已经下架的服务器删除
+
+API
+hadoop系统不能够随机写数据,１个G被分为N个64MB的小块，划分好的每一个块是block所以数据是被随机分配的
+*hadoop是用bio写的
+
+
+
+
+
+
+
+
+
+
