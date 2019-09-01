@@ -1,0 +1,52 @@
+                                Map Reduce
+Map的结果没办法落盘，它得出的是一个中间结果
+*result的作用以及写法
+symlink:hadoop--2.2.0(程序例子05)
+distrbutedcache:加了之后可以直接
+
+                                hadoop完整安装过程
+看hadoop2安装手顺
+fileovercontrner,在zookeeper下建立的API接口
+元数据相同，数据不同
+
+
+
+
+
+
+                                hbases&&sqoop
+bloom filter(另类的hash过滤器)
+过滤key~      与原表中原有的数据(1/0表)进行与运算(程序例子--13里面)
+1、ROW过滤器，根据kv中的row来过滤(一句过滤条件)
+2、ROWCOL过滤器，根据kv中的row+colfile来过滤
+*tsv
+批量加载:生成hfile文件然后加载到表中
+
+协处理器:
+observers,类似触发器(hook)
+    RegionObservers,钩子
+    WALObservers,提供WAL相关操作钩子
+    MasterObservers,提供DDL操作钩子
+endpoint,存储过程
+二级索引表
+挂载触发器jar包到hdfs路径下
+
+                            hive
+数据模型
+hive支持的4种表
+内部表     先建立
+外部表
+分区表     partitioned by,按列做分区，时间戳，列名
+桶表       
+物化视图
+
+远程服务启动
+hive --server   derby数据库只能一个人使用，所以在启动jdbc时要停着hive
+
+
+hive能够允许用户表写自己定义的函数UDF,分为
+    UDF--单个数据行，操纵一个数据库
+    UDAF--                    做集合的(聚合统计查询)
+    UDTF--                    线性变换(星型模型)
+
+Sqoop的使用
