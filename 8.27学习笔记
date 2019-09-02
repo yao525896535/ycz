@@ -1,0 +1,26 @@
+                              hadoop2
+yarn框架  Resource manager和Node　manager的关系
+
+
+                            Map Reduce
+map reduce(并行计算，为了减轻自身的运算量) 在程序例子04中
+Map Reduce执行流程图是  "有向无环图"
+map任务启动:扔一个给前面的，从后面的收一个，除开第一个和最后一个
+
+map()   k,v--k是64M块的偏移量,v是这段话，最后输出k,v
+reduce()    k,v--在同一事件中，k值相同时，v可以迭代在一起，最后输出k,v
+
+Word Count
+
+去重必排序       hadoop自己会排序，不用考虑排序的问题
+
+
+
+MapReduce计算调度
+1.FIFO批处理(用来算小例子，当数据量大了的时候效率低)
+2.容量调度器
+3.公平调度器
+
+自定义inputsplit的作用    
+自定义groupcomparator
+
