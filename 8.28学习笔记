@@ -1,0 +1,57 @@
+python3 -->(终端)交互式
+
+安装python3以及需要的配置    
+    sudo apt install python3
+    sudo apt install python3-pip
+    sudo apt install dev
+
+pip3 install flask
+
+
+
+
+vim a.py   vim写文件
+which env
+/usr/bin/env python3
+#!usr/bin/env python3
+在root下先chmod +x改可执行文件，执行后输出hello     
+
+#  -->注释
+... 
+内容
+...     -->注释多段
+        
+""" 
+内容
+"""     -->注释多段
+
+pprint(0:自带换行输出
+print()       系统默认自带end="\n"，改为end=""取消换行
+
+java，c/c++,python,go
+js,
+ 
+判断文件夹是否是包：看文件内是否有__init__的文件
+from 文件夹名 import 文件名    -->可以调用文件夹.文件
+from 文件夹名.文件名 import 函数名     -->可以调用文件夹.文件.函数
+        -->可以直接调用文件中的函数，并且存入dict
+每个文件夹.py文件，会生成一个dict(类似hashmap)
+input 键盘输入
+import 文件之后文件就成了对象  python中万物皆对象  
+dict==map,存k/v对的  
+
+sys包
+
+print(b"abc")   b是二进制，byte数组
+二进制 -->bin
+八进制 -->oct
+十进制 -->hex
+
+Decimal包   小数和整数相互计算
+getcontext().prec=4   设置全局精度为4
+divmod(7,5)    输出取余
+除法  /       整除   //     次方   **
+
+数组定长，数组内的名字即是值
+
+
